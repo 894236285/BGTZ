@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:directorchen.cqp.me.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="基础设置" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="281*"/>
+            <ColumnDefinition Width="116*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabControl" SelectionChanged="tabControl_SelectionChanged" HorizontalAlignment="Left" Height="400" Margin="10,10,0,0" VerticalAlignment="Top" Width="774" Grid.ColumnSpan="2">
+            <TabItem Header="更新提醒设置">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="入群管理">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="消息回复设置">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="敏感词管理">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="粉丝值等级查看">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="消息发送">
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.391,0.496">
+                    <Label x:Name="label" Content="请选择一个群：" HorizontalAlignment="Left" Margin="23,57,0,0" VerticalAlignment="Top"  Width="121"/>
+                    <ComboBox x:Name="cbGroup" HorizontalAlignment="Left" Margin="173,57,0,0" VerticalAlignment="Top" Width="183" SelectionChanged="cbGroup_SelectionChanged"/>
+                    <Label x:Name="label1" Content="请输入要发送的消息：" HorizontalAlignment="Left" Margin="23,160,0,0" VerticalAlignment="Top" Width="121"/>
+                    <RichTextBox x:Name="txtMessage" HorizontalAlignment="Left" Height="100" Margin="173,160,0,0" VerticalAlignment="Top" Width="367">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                    <Button x:Name="btn_send" Content="发送" HorizontalAlignment="Left" Margin="173,309,0,0" VerticalAlignment="Top" Width="146" Height="32" Click="btn_send_Click"/>
+                    <CheckBox x:Name="atAll" Content="@全体成员" HorizontalAlignment="Left" Margin="173,114,0,0" VerticalAlignment="Top"/>
+                    <Grid Margin="523,28,145.8,244.8"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

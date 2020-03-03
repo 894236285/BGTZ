@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Native.Sdk.Cqp.EventArgs;
 using Native.Sdk.Cqp.Interface;
+using Native.Sdk.Cqp;
 
 namespace directorchen.cqp.me.UI
 {
     public class Menu_OpenWindow : IMenuCall
     {
         private MainWindow _mainWindow = null;
+
+        public static CQApi CQApi = null;
+        public static CQLog CQLog = null;
 
         /// <summary>
         /// 打开窗体按钮被按下
@@ -19,6 +23,16 @@ namespace directorchen.cqp.me.UI
         /// <param name="e">事件参数</param>
         public void MenuCall(object sender, CQMenuCallEventArgs e)
         {
+            if (CQApi == null)
+            {
+                CQApi = e.CQApi;
+            }
+
+            if (CQLog == null)
+            {
+                CQLog = e.CQLog;
+            }
+
             if (this._mainWindow == null)
             {
                 this._mainWindow = new MainWindow();

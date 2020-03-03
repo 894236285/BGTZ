@@ -37,11 +37,11 @@ namespace Native.App.Export
 		{	
 			/*	
 			 * Name: 基础操作及设置	
-			 * Function: menuOpenWindow	
+			 * Function: Menu_OpenWindow	
 			 */	
 			if (AppData.UnityContainer.IsRegistered<IMenuCall> ("基础操作及设置"))	
 			{	
-				MenumenuOpenWindowHandler += AppData.UnityContainer.Resolve<IMenuCall> ("基础操作及设置").MenuCall;	
+				MenuMenu_OpenWindowHandler += AppData.UnityContainer.Resolve<IMenuCall> ("基础操作及设置").MenuCall;	
 			}	
 			
 		}	
@@ -50,16 +50,16 @@ namespace Native.App.Export
 		#region --导出方法--	
 		/*	
 		 * Name: 基础操作及设置	
-		 * Function: menuOpenWindow	
+		 * Function: Menu_OpenWindow	
 		 */	
-		public static event EventHandler<CQMenuCallEventArgs> MenumenuOpenWindowHandler;	
-		[DllExport (ExportName = "menuOpenWindow", CallingConvention = CallingConvention.StdCall)]	
-		public static int MenumenuOpenWindow ()	
+		public static event EventHandler<CQMenuCallEventArgs> MenuMenu_OpenWindowHandler;	
+		[DllExport (ExportName = "Menu_OpenWindow", CallingConvention = CallingConvention.StdCall)]	
+		public static int MenuMenu_OpenWindow ()	
 		{	
-			if (MenumenuOpenWindowHandler != null)	
+			if (MenuMenu_OpenWindowHandler != null)	
 			{	
-				CQMenuCallEventArgs args = new CQMenuCallEventArgs (AppData.CQApi, AppData.CQLog, "基础操作及设置", "menuOpenWindow");	
-				MenumenuOpenWindowHandler (typeof (CQMenuExport), args);	
+				CQMenuCallEventArgs args = new CQMenuCallEventArgs (AppData.CQApi, AppData.CQLog, "基础操作及设置", "Menu_OpenWindow");	
+				MenuMenu_OpenWindowHandler (typeof (CQMenuExport), args);	
 			}	
 			return 0;	
 		}	
