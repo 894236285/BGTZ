@@ -41,7 +41,18 @@
                     </RichTextBox>
                     <Button x:Name="btn_send" Content="发送" HorizontalAlignment="Left" Margin="173,309,0,0" VerticalAlignment="Top" Width="146" Height="32" Click="btn_send_Click"/>
                     <CheckBox x:Name="atAll" Content="@全体成员" HorizontalAlignment="Left" Margin="173,114,0,0" VerticalAlignment="Top"/>
-                    <Grid Margin="523,28,145.8,244.8"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="书籍管理" HorizontalAlignment="Left" Height="19.2" VerticalAlignment="Top" Width="59.2">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dgBookList" ItemsSource="{Binding bookList}"  HorizontalAlignment="Left" Height="353" Margin="10,10,0,0" VerticalAlignment="Top" Width="749">
+                        <DataGrid.Columns>
+                            
+                            <DataGridTextColumn Header="书名" Width="300" Binding="{Binding BookName}"/>
+                            <DataGridTextColumn Header="链接" Width="400" Binding="{Binding BookUrl}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>

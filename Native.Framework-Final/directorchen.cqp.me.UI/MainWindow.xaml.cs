@@ -14,6 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Native.Sdk.Cqp;
 using Native.Sdk.Cqp.Model;
+using System.Data;
+using System.Reflection;
+using directorchen.cqp.me.UI.Model;
+using SQLiteHelper;
 
 namespace directorchen.cqp.me.UI
 {
@@ -22,9 +26,10 @@ namespace directorchen.cqp.me.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        SQLiteHelp dbHelp;
         public MainWindow()
         {
+            dbHelp = new SQLiteHelp();
             InitializeComponent();
         }
 
@@ -58,6 +63,16 @@ namespace directorchen.cqp.me.UI
                     this.cbGroup.DisplayMemberPath = "Name";
                     this.cbGroup.SelectedIndex = 0;
                     this.cbGroup.ItemsSource = group;
+                }
+            }
+            else if (item.Header.ToString() == "书籍管理")
+            {
+                if (this.dgBookList.ItemsSource == null)
+                {
+                    string sql = "select * from Book";
+                    DataSet ds = dbHelp.GetDataSet(sql);
+                    List<Book> bookList = DataSetToList<Book>(ds, 0);
+                    this.dgBookList.ItemsSource = bookList;
                 }
             }
         }
@@ -95,6 +110,54 @@ namespace directorchen.cqp.me.UI
             Group group = (this.cbGroup.SelectedItem as GroupInfo).Group;
             List<GroupMemberInfo> groupMember = Menu_OpenWindow.CQApi.GetGroupMemberList(group);
 
+        }
+
+
+        /// <summary>
+        /// DataSetToList
+        /// </summary>
+        /// <typeparam name="T">转换类型</typeparam>
+        /// <param name="dataSet">数据源</param>
+        /// <param name="tableIndex">需要转换表的索引</param>
+        /// <returns></returns>
+        public List<T> DataSetToList<T>(DataSet dataSet, int tableIndex)
+        {
+            //确认参数有效
+            if (dataSet == null || dataSet.Tables.Count <= 0 || tableIndex < 0)
+                return null;
+
+            DataTable dt = dataSet.Tables[tableIndex];
+
+            List<T> list = new List<T>();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                //创建泛型对象
+                T _t = Activator.CreateInstance<T>();
+                //获取对象所有属性
+                PropertyInfo[] propertyInfo = _t.GetType().GetProperties();
+                for (int j = 0; j < dt.Columns.Count; j++)
+                {
+                    foreach (PropertyInfo info in propertyInfo)
+                    {
+                        //属性名称和列名相同时赋值
+                        if (dt.Columns[j].ColumnName.ToUpper().Equals(info.Name.ToUpper()))
+                        {
+                            if (dt.Rows[i][j] != DBNull.Value)
+                            {
+                                info.SetValue(_t, dt.Rows[i][j], null);
+                            }
+                            else
+                            {
+                                info.SetValue(_t, null, null);
+                            }
+                            break;
+                        }
+                    }
+                }
+                list.Add(_t);
+            }
+            return list;
         }
 
     }
