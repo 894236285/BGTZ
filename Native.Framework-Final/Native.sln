@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29806.167
+VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native.Tool", "Native.Tool\Native.Tool.csproj", "{0CA93EB9-4E25-46C6-94D2-0F97137A1606}"
 EndProject
@@ -9,9 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native.Sdk", "Native.Sdk\Na
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Native.Core", "Native.Core\Native.Core.csproj", "{C03C5BB7-91D0-4894-AAF9-127090DFAD91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "directorchen.cqp.me.Code", "directorchen.cqp.me.Code\directorchen.cqp.me.Code.csproj", "{5065621C-5ECB-401B-863D-1D0E971433F7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "directorchen.cqp.me.UI", "directorchen.cqp.me.UI\directorchen.cqp.me.UI.csproj", "{0E60D77F-B116-47D8-B93D-C1126BE83AFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cqp.tian.bgtz.me.Code", "cqp.tian.bgtz.me.Code\cqp.tian.bgtz.me.Code.csproj", "{7444F07B-8196-4A44-933D-F28AAF5E9D3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,22 +37,14 @@ Global
 		{C03C5BB7-91D0-4894-AAF9-127090DFAD91}.Release|Any CPU.ActiveCfg = Release|x86
 		{C03C5BB7-91D0-4894-AAF9-127090DFAD91}.Release|x86.ActiveCfg = Release|x86
 		{C03C5BB7-91D0-4894-AAF9-127090DFAD91}.Release|x86.Build.0 = Release|x86
-		{5065621C-5ECB-401B-863D-1D0E971433F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5065621C-5ECB-401B-863D-1D0E971433F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5065621C-5ECB-401B-863D-1D0E971433F7}.Debug|x86.ActiveCfg = Debug|x86
-		{5065621C-5ECB-401B-863D-1D0E971433F7}.Debug|x86.Build.0 = Debug|x86
-		{5065621C-5ECB-401B-863D-1D0E971433F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5065621C-5ECB-401B-863D-1D0E971433F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5065621C-5ECB-401B-863D-1D0E971433F7}.Release|x86.ActiveCfg = Release|Any CPU
-		{5065621C-5ECB-401B-863D-1D0E971433F7}.Release|x86.Build.0 = Release|Any CPU
-		{0E60D77F-B116-47D8-B93D-C1126BE83AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E60D77F-B116-47D8-B93D-C1126BE83AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E60D77F-B116-47D8-B93D-C1126BE83AFA}.Debug|x86.ActiveCfg = Debug|x86
-		{0E60D77F-B116-47D8-B93D-C1126BE83AFA}.Debug|x86.Build.0 = Debug|x86
-		{0E60D77F-B116-47D8-B93D-C1126BE83AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E60D77F-B116-47D8-B93D-C1126BE83AFA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E60D77F-B116-47D8-B93D-C1126BE83AFA}.Release|x86.ActiveCfg = Release|Any CPU
-		{0E60D77F-B116-47D8-B93D-C1126BE83AFA}.Release|x86.Build.0 = Release|Any CPU
+		{7444F07B-8196-4A44-933D-F28AAF5E9D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7444F07B-8196-4A44-933D-F28AAF5E9D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7444F07B-8196-4A44-933D-F28AAF5E9D3A}.Debug|x86.ActiveCfg = Debug|x86
+		{7444F07B-8196-4A44-933D-F28AAF5E9D3A}.Debug|x86.Build.0 = Debug|x86
+		{7444F07B-8196-4A44-933D-F28AAF5E9D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7444F07B-8196-4A44-933D-F28AAF5E9D3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7444F07B-8196-4A44-933D-F28AAF5E9D3A}.Release|x86.ActiveCfg = Release|Any CPU
+		{7444F07B-8196-4A44-933D-F28AAF5E9D3A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

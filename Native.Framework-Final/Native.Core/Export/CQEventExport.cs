@@ -50,7 +50,7 @@ namespace Native.App.Export
 		[DllExport (ExportName = "AppInfo", CallingConvention = CallingConvention.StdCall)]	
 		private static string AppInfo ()	
 		{	
-			return "9,directorchen.cqp.me";	
+			return "9,cqp.tian.bgtz.me";	
 		}	
 		
 		/// <summary>	
@@ -64,12 +64,12 @@ namespace Native.App.Export
 			// 反射获取 AppData 实例	
 			Type appDataType = typeof (AppData);	
 			// 注册一个 CQApi 实例	
-			AppInfo appInfo = new AppInfo ("directorchen.cqp.me", 1, 9, "报更童子", "1.0.0", 1, "迪瑞克特", "自动获取更新", authCode);	
+			AppInfo appInfo = new AppInfo ("cqp.tian.bgtz.me", 1, 9, "报更童子", "1.1.0", 2, "迪瑞克特", "自动获取起点书籍更新并发送到QQ群", authCode);	
 			appDataType.GetRuntimeProperty ("CQApi").GetSetMethod (true).Invoke (null, new object[] { new CQApi (appInfo) });	
-			AppData.UnityContainer.RegisterInstance<CQApi> ("directorchen.cqp.me", AppData.CQApi);	
+			AppData.UnityContainer.RegisterInstance<CQApi> ("cqp.tian.bgtz.me", AppData.CQApi);	
 			// 向容器注册一个 CQLog 实例	
 			appDataType.GetRuntimeProperty ("CQLog").GetSetMethod (true).Invoke (null, new object[] { new CQLog (authCode) });	
-			AppData.UnityContainer.RegisterInstance<CQLog> ("directorchen.cqp.me", AppData.CQLog);	
+			AppData.UnityContainer.RegisterInstance<CQLog> ("cqp.tian.bgtz.me", AppData.CQLog);	
 			// 注册插件全局异常捕获回调, 用于捕获未处理的异常, 回弹给 酷Q 做处理	
 			AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;	
 			// 本函数【禁止】处理其他任何代码，以免发生异常情况。如需执行初始化代码请在Startup事件中执行（Type=1001）。	
@@ -125,15 +125,15 @@ namespace Native.App.Export
 			}	
 			
 			/*	
-			 * Id: 1001	
-			 * Type: 1001	
-			 * Name: 酷Q启动事件	
-			 * Function: _eventStartup	
+			 * Id: 1003	
+			 * Type: 1003	
+			 * Name: 应用已被启用	
+			 * Function: _eventEnable	
 			 * Priority: 30000	
 			 */	
-			if (AppData.UnityContainer.IsRegistered<ICQStartup> ("酷Q启动事件"))	
+			if (AppData.UnityContainer.IsRegistered<IAppEnable> ("应用已被启用"))	
 			{	
-				Event_eventStartupHandler += AppData.UnityContainer.Resolve<ICQStartup> ("酷Q启动事件").CQStartup;	
+				Event_eventEnableHandler += AppData.UnityContainer.Resolve<IAppEnable> ("应用已被启用").AppEnable;	
 			}	
 			
 		}	
@@ -186,21 +186,21 @@ namespace Native.App.Export
 		
 		/// <summary>	
 		/// 事件回调, 以下是对应 Json 文件的信息	
-		/// <para>Id: 1001</para>	
-		/// <para>Type: 1001</para>	
-		/// <para>Name: 酷Q启动事件</para>	
-		/// <para>Function: _eventStartup</para>	
+		/// <para>Id: 1003</para>	
+		/// <para>Type: 1003</para>	
+		/// <para>Name: 应用已被启用</para>	
+		/// <para>Function: _eventEnable</para>	
 		/// <para>Priority: 30000</para>	
 		/// <para>IsRegex: False</para>	
 		/// </summary>	
-		public static event EventHandler<CQStartupEventArgs> Event_eventStartupHandler;	
-		[DllExport (ExportName = "_eventStartup", CallingConvention = CallingConvention.StdCall)]	
-		public static int Event_eventStartup ()	
+		public static event EventHandler<CQAppEnableEventArgs> Event_eventEnableHandler;	
+		[DllExport (ExportName = "_eventEnable", CallingConvention = CallingConvention.StdCall)]	
+		public static int Event_eventEnable ()	
 		{	
-			if (Event_eventStartupHandler != null)	
+			if (Event_eventEnableHandler != null)	
 			{	
-				CQStartupEventArgs args = new CQStartupEventArgs (AppData.CQApi, AppData.CQLog, 1001, 1001, "酷Q启动事件", "_eventStartup", 30000);	
-				Event_eventStartupHandler (typeof (CQEventExport), args);	
+				CQAppEnableEventArgs args = new CQAppEnableEventArgs (AppData.CQApi, AppData.CQLog, 1003, 1003, "应用已被启用", "_eventEnable", 30000);	
+				Event_eventEnableHandler (typeof (CQEventExport), args);	
 			}	
 			return 0;	
 		}	

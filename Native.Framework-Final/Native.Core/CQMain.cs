@@ -1,11 +1,11 @@
-﻿using directorchen.cqp.me.UI;
-using Native.Sdk.Cqp.Interface;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unity;
+using Native.Sdk.Cqp.Interface;
+using cqp.tian.bgtz.me.Code;
 
 namespace Native.Core
 {
@@ -20,7 +20,11 @@ namespace Native.Core
 		/// <param name="container">用于注册的 IOC 容器 </param>
 		public static void Register (IUnityContainer unityContainer)
 		{
-			unityContainer.RegisterType<IMenuCall, Menu_OpenWindow>("基础操作及设置");
+			//应用启动时
+			unityContainer.RegisterType<IAppEnable, Event_AppEnable>("应用已被启用");
+
+			//新人入群
+			unityContainer.RegisterType<IGroupMemberIncrease, Event_GroupMemberPass>("群成员增加事件处理");
 		}
 	}
 }

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Native.Core</RootNamespace>
-    <AssemblyName>directorchen.cqp.me</AssemblyName>
+    <AssemblyName>cqp.tian.bgtz.me</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -30,7 +30,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>F:\XHDZ\CQP-xiaoi\酷Q Pro\dev\</OutputPath>
+    <OutputPath>..\..\CQP-xiaoi\酷Q Pro\dev\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -133,13 +133,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\directorchen.cqp.me.Code\directorchen.cqp.me.Code.csproj">
-      <Project>{5065621c-5ecb-401b-863d-1d0e971433f7}</Project>
-      <Name>directorchen.cqp.me.Code</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\directorchen.cqp.me.UI\directorchen.cqp.me.UI.csproj">
-      <Project>{0e60d77f-b116-47d8-b93d-c1126be83afa}</Project>
-      <Name>directorchen.cqp.me.UI</Name>
+    <ProjectReference Include="..\cqp.tian.bgtz.me.Code\cqp.tian.bgtz.me.Code.csproj">
+      <Project>{7444f07b-8196-4a44-933d-f28aaf5e9d3a}</Project>
+      <Name>cqp.tian.bgtz.me.Code</Name>
     </ProjectReference>
     <ProjectReference Include="..\Native.Sdk\Native.Sdk.csproj">
       <Project>{d7a958b3-79d9-49f8-8bb4-9619bab6ecba}</Project>

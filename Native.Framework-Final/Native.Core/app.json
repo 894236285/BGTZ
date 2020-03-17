@@ -6,10 +6,10 @@
 	"ret": 1,
 	"apiver": 9,
 	"name": "报更童子",
-	"version": "1.0.0",
-	"version_id": 1,
+	"version": "1.1.0",
+	"version_id": 2,
 	"author": "迪瑞克特",
-	"description": "自动获取更新",
+	"description": "自动获取起点书籍更新并发送到QQ群",
 	"event": [
 		//{
 		//	"id": 1,
@@ -88,13 +88,13 @@
 		//	"function": "_eventRequest_AddGroup",
 		//	"priority": 30000
 		//},
-		{
-			"id": 1001,
-			"type": 1001,
-			"name": "酷Q启动事件",
-			"priority": 30000,
-			"function": "_eventStartup"
-		}
+		//{
+		//	"id": 1001,
+		//	"type": 1001,
+		//	"name": "酷Q启动事件",
+		//	"priority": 30000,
+		//	"function": "_eventStartup"
+		//},
 		//{
 		//	"id": 1002,
 		//	"type": 1002,
@@ -102,13 +102,13 @@
 		//	"priority": 30000,
 		//	"function": "_eventExit"
 		//},
-		//{
-		//	"id": 1003,
-		//	"type": 1003,
-		//	"name": "应用已被启用",
-		//	"priority": 30000,
-		//	"function": "_eventEnable"
-		//},
+		{
+			"id": 1003,
+			"type": 1003,
+			"name": "应用已被启用",
+			"priority": 30000,
+			"function": "_eventEnable"
+		}
 		//{
 		//	"id": 1004,
 		//	"type": 1004,
@@ -118,10 +118,14 @@
 		//}
 	],
 	"menu": [ // 设置菜单（发布前请删除无用菜单，如果无需设置菜单请全部删除）
-		{
-			"name": "基础操作及设置", //菜单名称
-			"function": "Menu_OpenWindow" //菜单对应函数
-		}
+		//{
+		//	"name": "设置A", //菜单名称
+		//	"function": "_menuA" //菜单对应函数
+		//},
+		//{
+		//	"name": "设置B",
+		//	"function": "_menuB"
+		//}
 	],
 	"status": [ // 悬浮窗状态（见 com.example.status 样例）
 		{
@@ -135,7 +139,7 @@
 	"auth": [ // 应用权限（发布前请删除无用权限）
 		//20,  //[敏感]取Cookies    getCookies / getCsrfToken
 		//30,  //接收语音           getRecord
-		101, //发送群消息         sendGroupMsg
+		101 //发送群消息         sendGroupMsg
 		//103, //发送讨论组消息     sendDiscussMsg
 		//106, //发送私聊消息       sendPrivateMsg
 		//110, //[敏感]发送赞       sendLike
@@ -148,15 +152,15 @@
 		//126, //置群成员名片       setGroupCard
 		//127, //[敏感]置群退出     setGroupLeave
 		//128, //置群成员专属头衔   setGroupSpecialTitle
-		130, //取群成员信息       getGroupMemberInfo
+		//130, //取群成员信息       getGroupMemberInfo
 		//131, //取陌生人信息       getStrangerInfo
-		132, //取群信息           getGroupInfo
+		//132, //取群信息           getGroupInfo
 		//140, //置讨论组退出       setDiscussLeave
 		//150, //置好友添加请求     setFriendAddRequest
 		//151, //置群添加请求       setGroupAddRequest
-		160, //取群成员列表       getGroupMemberList
-		161, //取群列表           getGroupList
+		//160, //取群成员列表       getGroupMemberList
+		//161, //取群列表           getGroupList
 		//162, //取好友列表         getFriendList
-		180 //撤回消息           deleteMsg
+		//180 //撤回消息           deleteMsg
 	]
 }
