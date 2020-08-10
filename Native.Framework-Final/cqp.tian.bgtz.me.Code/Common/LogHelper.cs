@@ -13,9 +13,15 @@ namespace cqp.tian.bgtz.me.Code.Common
         /// 日志记录
         /// </summary>
         /// <param name="msg">提示信息</param>
-        public static void WriteMsgInLog(string msg)
+        /// <param name="code">文件名</param>
+        public static void WriteMsgInLog(string msg,string code)
         {
-            string filePath = "F:\\XHDZ_Log.txt";
+            string filePath = CommonApi.LogPath + code + "_Log.txt";
+
+            if (!Directory.Exists(CommonApi.LogPath))
+            {
+                Directory.CreateDirectory(CommonApi.LogPath);
+            }
 
             //标记是否是新建文件的标量   
             //如果文件不存在，就新建该文件  

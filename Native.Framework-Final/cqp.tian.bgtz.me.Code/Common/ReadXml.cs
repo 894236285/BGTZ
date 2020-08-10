@@ -18,7 +18,7 @@ namespace cqp.tian.bgtz.me.Code.Common
         {
             List<Book> bookList = new List<Book>();
             XmlDocument doc = new XmlDocument();
-            doc.Load("F:\\BookGroup\\Book.xml");
+            doc.Load(CommonApi.mainPath + "BookGroup\\Book.xml");
             XmlNodeList nodeList = doc.DocumentElement.FirstChild.ChildNodes;
 
             foreach (XmlElement node in nodeList)
@@ -49,13 +49,16 @@ namespace cqp.tian.bgtz.me.Code.Common
             List<Group> groupList = new List<Group>();
 
             XmlDocument doc = new XmlDocument();
-            doc.Load("F:\\BookGroup\\Group.xml");
+            doc.Load(CommonApi.mainPath + "BookGroup\\Group.xml");
             XmlNodeList nodeList = doc.DocumentElement.FirstChild.ChildNodes;
 
             foreach (XmlElement node in nodeList)
             {
                 Group group = new Group();
                 group.GroupNo = node.InnerText;
+                group.text = node.GetAttribute("text");
+                group.isSendImage = node.GetAttribute("isSendImage");
+                group.imageName = node.GetAttribute("imageName");
                 groupList.Add(group);
             }
 

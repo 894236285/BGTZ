@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using AngleSharp.Parser.Html;
 using Newtonsoft.Json;
 using System.IO;
 using System.Net.Http;
@@ -21,13 +20,14 @@ namespace cqp.tian.bgtz.me.Code
         public static CQApi CQApi = null;
         System.Timers.Timer t = new System.Timers.Timer(10000); //设置时间间隔为10秒
         private static object lockObj = new object();
+        
         public void AppEnable(object sender, CQAppEnableEventArgs e)
         {
             if (CQApi == null)
             {
                 CQApi = e.CQApi;
             }
-
+            
             t.Elapsed += new System.Timers.ElapsedEventHandler(getNewChapter);
             t.AutoReset = true; //每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
             t.Enabled = true;
@@ -36,6 +36,7 @@ namespace cqp.tian.bgtz.me.Code
 
         private void getNewChapter(object sender, System.EventArgs e)
         {
+            
             lock (lockObj) {
                 //获取更新的书籍信息
                 List<Book> bookList = ReadXml.GetBooksData();
@@ -62,7 +63,7 @@ namespace cqp.tian.bgtz.me.Code
                     }
 
                     //本次获取的最新章节名称
-                    LogHelper.WriteMsgInLog("书名：" + book.Name + "，章节名称：" + newChapter.ChapterName);
+                    LogHelper.WriteMsgInLog("书名：" + book.Name + "，章节名称：" + newChapter.ChapterName,book.Code);
                 }
 
             }
@@ -113,7 +114,7 @@ namespace cqp.tian.bgtz.me.Code
         /// <returns></returns>
         private Chapter readLatestChapter(string bookCode)
         {
-            string filePath = "F://LatestChapter//" + bookCode + ".json";
+            string filePath = CommonApi.mainPath + "LatestChapter\\" + bookCode + ".json";
 
             //如果文件不存在，就新建该文件，并返回null，表示这本书是第一次获取更新  
             if (!File.Exists(filePath))
@@ -141,7 +142,7 @@ namespace cqp.tian.bgtz.me.Code
         private void writeLatestChapter(Chapter chapter,string bookCode)
         {
             //文件地址
-            string filePath = "F://LatestChapter//" + bookCode + ".json";
+            string filePath = CommonApi.mainPath + "LatestChapter\\" + bookCode + ".json";
 
             //序列化为json字符串
             string json = JsonConvert.SerializeObject(chapter);

@@ -16,7 +16,7 @@
 ## 配置文件
 
 1. 章节报更涉及2个文件配置，分别为Book.xml,xxx.json
-* Book.xml示例格式及内容，其中id是起点中文网的书籍id,code和name是自定义命名，code会根据名称生成最新章节的json，name一般用书籍名称易于理解阅读，group节点是获取的章节信息将要发到哪些群
+* Book.xml示例格式及内容，其中id是起点中文网的书籍id,code和name是自定义命名，code会根据名称生成最新章节的json，name一般用书籍名称易于理解阅读，group节点是获取的章节信息将要发到哪些群，如有多本书则添加多个book节点
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
  <root>
@@ -34,7 +34,7 @@
 * xxx.json是book.xml的code为名，如上例，这个json就名为xhdz.json，存储的是已获取的最新章节，用来与服务器的章节信息比较，判断是否是最新章节
 > {"ChapterName":"第二十七章 昙光","ChapterTime":"2020-03-16 18:13:54","WordNumber":3136}
 ---
-2. 入群欢迎涉及1个文件配置，即Group.xml,存储的是哪些群启用了入群欢迎,group节点的内容存储的是群号，而它的属性则代表了一些其他配置，text:欢迎语;isSendImage:是否发送图片,取值是Y和N,imageName则是图片文件的名称(带后缀),如果不需要为空就好,属性名还是要,不写属性可能会报错(没试过),酷Q图片地址是\data\image;mirai图片存放地址是\jre\lib\images.
+2. 入群欢迎涉及1个文件配置，即Group.xml,存储的是哪些群启用了入群欢迎,group节点的内容存储的是群号，而它的属性则代表了一些其他配置，text:欢迎语;isSendImage:是否发送图片,取值是Y和N,imageName则是图片文件的名称(带后缀),如果不需要为空就好,属性名还是要,不写属性可能会报错(没试过),酷Q图片地址是\data\image;mirai图片存放地址是\jre\lib\images,如有多个群则添加多个group节点
 ```xml 
 <?xml version="1.0" encoding="utf-8" ?>
 <root>
@@ -46,5 +46,5 @@
 ```
 
 ## 说明
-1. 代码中关于配置文件的加载获取都是写死了的，要修改的话只能直接修改代码，其中book.xml和group.xml的路径是F:\BookGroup\Book.xml和F:\BookGroup\Group.xml,json文件地址是F:\LatestChapter\xxx.json
-2. core项目的生成目录是酷Q的dev目录，需修改。
+1. 代码中关于配置文件的加载获取都是取的相对路径，机器人data目录下的BGTZ目录，酷Q是\data\BGTZ\，mirai是\jre\bin\data\BGTZ\
+
