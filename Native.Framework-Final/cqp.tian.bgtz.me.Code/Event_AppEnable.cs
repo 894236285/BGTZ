@@ -52,13 +52,10 @@ namespace cqp.tian.bgtz.me.Code
 
                     //如果起点的最新章节发布时间要大于本地的最新章节发布时间，说明已更新
                     if (latestChapter == null || DateTime.Parse(newChapter.ChapterTime) > DateTime.Parse(latestChapter.ChapterTime))
-                    {
-                        string atAll = CQApi.CQCode_AtAll().ToSendString();
-                        string picture = CQApi.CQCode_Image(book.ImageName).ToSendString();
-
+                    {   
                         foreach (Group g in book.Group)
                         {
-                            CQApi.SendGroupMessage(long.Parse(g.GroupNo), (book.IsAtAll ? atAll + "\n" : string.Empty) + (book.IsSendImage ? picture + "\n" : string.Empty) + "最新章节：\"" + newChapter.ChapterName + "\" \n发布时间：" + newChapter.ChapterTime + " \n本章字数：" + newChapter.WordNumber);
+                            CQApi.SendGroupMessage(long.Parse(g.GroupNo), (g.IsAtAll ? CQApi.CQCode_AtAll().ToSendString() + "\n" : string.Empty) + (g.IsSendImage ? CQApi.CQCode_Image(g.ImageName).ToSendString() + "\n" : string.Empty) + "最新章节：\"" + newChapter.ChapterName + "\" \n发布时间：" + newChapter.ChapterTime + " \n本章字数：" + newChapter.WordNumber);
                         }
                         //把最新章节信息写入本地
                         writeLatestChapter(newChapter, book.Code);

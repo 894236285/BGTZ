@@ -21,11 +21,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
  <root>
     <books>
-		<book id="1015358161" code="xhdz" name="玄浑道章" isAtAll="Y" isSendImage="N" imageName="xhdz.jpg">
-			<group>221827649</group>
-			<group>615387042</group>
-			<group>762873632</group>
-			<group>526275426</group>
+		<book id="1015358161" code="xhdz" name="玄浑道章">
+			<group isAtAll="Y" isSendImage="N" imageName="xhdz.jpg">221827649</group>
+			<group isAtAll="Y" isSendImage="N" imageName="xhdz.jpg">615387042</group>
+			<group isAtAll="Y" isSendImage="N" imageName="xhdz.jpg">762873632</group>
+			<group isAtAll="Y" isSendImage="N" imageName="xhdz.jpg">526275426</group>
 		</book>		
 	</books>
 </root>

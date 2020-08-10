@@ -27,14 +27,16 @@ namespace cqp.tian.bgtz.me.Code.Common
                 book.Name = node.GetAttribute("name");
                 book.Id = node.GetAttribute("id");
                 book.Code = node.GetAttribute("code");
-                book.IsAtAll = node.GetAttribute("isAtAll") == "Y" ? true : false;
-                book.IsSendImage = node.GetAttribute("isSendImage") == "Y" ? true : false;
-                book.ImageName = node.GetAttribute("imageName");
                 book.Group = new List<Group>();
 
                 foreach (XmlElement childNode in node.ChildNodes)
                 {
-                    book.Group.Add(new Group() { GroupNo = childNode.InnerText });
+                    book.Group.Add(new Group() { 
+                        GroupNo = childNode.InnerText,
+                        IsAtAll= childNode.GetAttribute("isAtAll") == "Y" ? true : false ,
+                        IsSendImage= childNode.GetAttribute("isSendImage") == "Y" ? true : false,
+                        ImageName = childNode.GetAttribute("imageName")
+                    });
                 }
 
                 bookList.Add(book);

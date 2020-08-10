@@ -19,6 +19,11 @@ namespace cqp.tian.bgtz.me.Code.Enum
         public string Text { get; set; }
 
         /// <summary>
+        /// 是否@全体成员
+        /// </summary>
+        public bool IsAtAll { get; set; }
+
+        /// <summary>
         /// 是否发送图片
         /// </summary>
         public bool IsSendImage { get; set; }
