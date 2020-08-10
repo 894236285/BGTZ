@@ -18,7 +18,7 @@ namespace cqp.tian.bgtz.me.Code.Common
         {
             List<Book> bookList = new List<Book>();
             XmlDocument doc = new XmlDocument();
-            doc.Load(CommonApi.mainPath + "BookGroup\\Book.xml");
+            doc.Load(CommonApi.MainPath + "BookGroup\\Book.xml");
             XmlNodeList nodeList = doc.DocumentElement.FirstChild.ChildNodes;
 
             foreach (XmlElement node in nodeList)
@@ -27,6 +27,9 @@ namespace cqp.tian.bgtz.me.Code.Common
                 book.Name = node.GetAttribute("name");
                 book.Id = node.GetAttribute("id");
                 book.Code = node.GetAttribute("code");
+                book.IsAtAll = node.GetAttribute("isAtAll") == "Y" ? true : false;
+                book.IsSendImage = node.GetAttribute("isSendImage") == "Y" ? true : false;
+                book.ImageName = node.GetAttribute("imageName");
                 book.Group = new List<Group>();
 
                 foreach (XmlElement childNode in node.ChildNodes)
@@ -49,16 +52,16 @@ namespace cqp.tian.bgtz.me.Code.Common
             List<Group> groupList = new List<Group>();
 
             XmlDocument doc = new XmlDocument();
-            doc.Load(CommonApi.mainPath + "BookGroup\\Group.xml");
+            doc.Load(CommonApi.MainPath + "BookGroup\\Group.xml");
             XmlNodeList nodeList = doc.DocumentElement.FirstChild.ChildNodes;
 
             foreach (XmlElement node in nodeList)
             {
                 Group group = new Group();
                 group.GroupNo = node.InnerText;
-                group.text = node.GetAttribute("text");
-                group.isSendImage = node.GetAttribute("isSendImage");
-                group.imageName = node.GetAttribute("imageName");
+                group.Text = node.GetAttribute("text");
+                group.IsSendImage = node.GetAttribute("isSendImage") == "Y" ? true : false;
+                group.ImageName = node.GetAttribute("imageName");
                 groupList.Add(group);
             }
 

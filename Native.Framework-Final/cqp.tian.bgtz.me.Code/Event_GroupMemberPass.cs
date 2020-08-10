@@ -19,13 +19,13 @@ namespace cqp.tian.bgtz.me.Code
 
             foreach (Group group in grouList)
             {
-                if (e.CQApi.IsAllowSendImage && e.FromGroup.Id == long.Parse(group.GroupNo))
+                if (e.FromGroup.Id == long.Parse(group.GroupNo))
                 {
-                    var picture = CQApi.CQCode_Image(group.isSendImage == "Y" ? group.imageName : Guid.NewGuid().ToString());
+                    var picture = CQApi.CQCode_Image(group.ImageName).ToSendString();
                     var at = CQApi.CQCode_At(e.BeingOperateQQ).ToSendString();
-                    
+
                     //发送群消息
-                    e.CQApi.SendGroupMessage(e.FromGroup, at + group.text + picture);
+                    e.CQApi.SendGroupMessage(e.FromGroup, at + group.Text + (group.IsSendImage ? picture : string.Empty));
 
                     e.Handler = true;
                     return;

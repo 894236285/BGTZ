@@ -16,12 +16,12 @@
 ## 配置文件
 
 1. 章节报更涉及2个文件配置，分别为Book.xml,xxx.json
-* Book.xml示例格式及内容，其中id是起点中文网的书籍id,code和name是自定义命名，code会根据名称生成最新章节的json，name一般用书籍名称易于理解阅读，group节点是获取的章节信息将要发到哪些群，如有多本书则添加多个book节点
+* Book.xml示例格式及内容，其中id是起点中文网的书籍id,code和name是自定义命名，code会根据名称生成最新章节的json，name一般用书籍名称易于理解阅读，isAtall是否@全体成员，isSendImage是否发送图片(图片是处于消息前)，imageName图片名称(带后缀)，group节点是获取的章节信息将要发到哪些群，如有多本书则添加多个book节点
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
  <root>
     <books>
-		<book id="1015358161" code="xhdz" name="玄浑道章">
+		<book id="1015358161" code="xhdz" name="玄浑道章" isAtAll="Y" isSendImage="N" imageName="xhdz.jpg">
 			<group>221827649</group>
 			<group>615387042</group>
 			<group>762873632</group>

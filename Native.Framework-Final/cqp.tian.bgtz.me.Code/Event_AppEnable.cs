@@ -54,9 +54,11 @@ namespace cqp.tian.bgtz.me.Code
                     if (latestChapter == null || DateTime.Parse(newChapter.ChapterTime) > DateTime.Parse(latestChapter.ChapterTime))
                     {
                         string atAll = CQApi.CQCode_AtAll().ToSendString();
+                        string picture = CQApi.CQCode_Image(book.ImageName).ToSendString();
+
                         foreach (Group g in book.Group)
                         {
-                            CQApi.SendGroupMessage(long.Parse(g.GroupNo), atAll + "\n最新章节：\"" + newChapter.ChapterName + "\" \n发布时间：" + newChapter.ChapterTime + " \n本章字数：" + newChapter.WordNumber);
+                            CQApi.SendGroupMessage(long.Parse(g.GroupNo), (book.IsAtAll ? atAll + "\n" : string.Empty) + (book.IsSendImage ? picture + "\n" : string.Empty) + "最新章节：\"" + newChapter.ChapterName + "\" \n发布时间：" + newChapter.ChapterTime + " \n本章字数：" + newChapter.WordNumber);
                         }
                         //把最新章节信息写入本地
                         writeLatestChapter(newChapter, book.Code);
@@ -65,7 +67,6 @@ namespace cqp.tian.bgtz.me.Code
                     //本次获取的最新章节名称
                     LogHelper.WriteMsgInLog("书名：" + book.Name + "，章节名称：" + newChapter.ChapterName,book.Code);
                 }
-
             }
         }
 
@@ -78,7 +79,7 @@ namespace cqp.tian.bgtz.me.Code
             string url = "https://book.qidian.com/ajax/book/category?bookId=" + Id;
 
             //发送get请求
-            HttpWebResponse response = HttpHelper.CreateGetHttpResponse(url, 5000, "", null);
+            HttpWebResponse response = HttpHelper.CreateGetHttpResponse(url, 5000, string.Empty, null);
 
             //使用流获取response的数据
             StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
@@ -89,7 +90,7 @@ namespace cqp.tian.bgtz.me.Code
 
             JArray vsArray = new JArray();
 
-            if (obj["data"]["vs"].ToString() != "")
+            if (!string.IsNullOrWhiteSpace(obj["data"]["vs"].ToString()))
             {
                 vsArray = JArray.Parse(obj["data"]["vs"].ToString());
             }
@@ -114,7 +115,7 @@ namespace cqp.tian.bgtz.me.Code
         /// <returns></returns>
         private Chapter readLatestChapter(string bookCode)
         {
-            string filePath = CommonApi.mainPath + "LatestChapter\\" + bookCode + ".json";
+            string filePath = CommonApi.MainPath + "LatestChapter\\" + bookCode + ".json";
 
             //如果文件不存在，就新建该文件，并返回null，表示这本书是第一次获取更新  
             if (!File.Exists(filePath))
@@ -142,7 +143,7 @@ namespace cqp.tian.bgtz.me.Code
         private void writeLatestChapter(Chapter chapter,string bookCode)
         {
             //文件地址
-            string filePath = CommonApi.mainPath + "LatestChapter\\" + bookCode + ".json";
+            string filePath = CommonApi.MainPath + "LatestChapter\\" + bookCode + ".json";
 
             //序列化为json字符串
             string json = JsonConvert.SerializeObject(chapter);

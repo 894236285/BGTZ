@@ -8,12 +8,24 @@ namespace cqp.tian.bgtz.me.Code.Enum
 {
     public class Group
     {
+        /// <summary>
+        /// 群号
+        /// </summary>
         public string GroupNo { get; set; }
 
-        public string text { get; set; }
+        /// <summary>
+        /// 提示语
+        /// </summary>
+        public string Text { get; set; }
 
-        public string isSendImage { get; set; }
+        /// <summary>
+        /// 是否发送图片
+        /// </summary>
+        public bool IsSendImage { get; set; }
 
-        public string imageName { get; set; }
+        /// <summary>
+        /// 图片名称
+        /// </summary>
+        public string ImageName { get; set; }
     }
 }
